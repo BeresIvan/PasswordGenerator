@@ -87,6 +87,9 @@ header {
   text-align: center;
   cursor: pointer;
 }
+.settings {
+   text-align: right;
+}
 
 button[disabled] {
   cursor: default;
