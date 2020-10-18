@@ -5,7 +5,7 @@ function writePassword() {
   
     passwordText.value = password;
 }
-
+// in this part of the code we have the variables and the function with the promts
 let generateBtn = document.querySelector("#generate");
 let lowerCase = "abcdefghijklmnopqrstuvxyz";
 let upperCase = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
@@ -49,16 +49,16 @@ function generatePassword() {
     let finalPassword = password (passwordLength, selectedCharacters);
     return finalPassword;
 }
-
+// in this part of the code we have the forloop
 function password (passwordLength, selectedCharacters) {
    let password = "";
-   for (var i = 0; i < passwordLength; i++) {
+   for (let i = 0; i < passwordLength; i++) {
        password += selectedCharacters.charAt(Math.floor(Math.random() * selectedCharacters.length));
    }
    return password;
 }
 
-// Write password to the #password input
+
 
 
 // Add event listener to generate button
