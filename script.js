@@ -1,43 +1,65 @@
-let lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
-let uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "X", "Y", "Z"]
-let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-let specialCharacters = [" ", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "[", "]", "=", "<", ">", "/", "|", "\\", ";", "'", ".", ",", "?", "~", "`", "+", "_", "-",]
 // Assignment Code
-let generateBtn = document.querySelector("#generate");
+function writePassword() {
+    let password = generatePassword();
+    let passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+}
 
+let generateBtn = document.querySelector("#generate");
+let lowerCase = "abcdefghijklmnopqrstuvxyz";
+let upperCase = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
+let numbers = "0123456789";
+let specialCharacters = " !@#$%^&*(){}[]=<>/|\;'.,?~`+_-";
 
 function generatePassword() {
-  let passwordLength = prompt("Please enter pw length between 8 and 128");
-  let includeLowercaseLetters = confirm("Do you want lowercase letters?");
-  let includeUppercaseLetters = confirm("Do you want uppercase letters?");
-  let includeNumbers = confirm("Do you want Numbers letters?");
-  let includeSymbols = confirm("Do you want Symbols letters?");
-  
+    let passwordLength = prompt("Enter password length");
+    if (passwordLength >= 8 && passwordLength <= 128) {
+    } else {
+      alert("Password must be between 8 and 148 characters");
+      return generatePassword();
+    }    
+    let lowerCase = confirm(
+        "Do you want to include lowercase letters?"
+    );
+    let upperCase = confirm(
+        "Do you want to include uppercase letters?"
+    );
+    let numbers = confirm(
+        "Do you want to include numbers?"
+    );
+    let specialCharacters = confirm(
+        "Do you want to include special characters?"
+    );
+    let selectedCharacters = "";
 
-
-
-    let password = [];
-    for (let i=0; i < passwordLength; 1++){
+    if (lowerCase === true) {
+      selectedCharacters = selectedCharacters + lowerCase;
     }
-    return password;
+    if (upperCase === true) {
+      selectedCharacters = selectedCharacters + upperCase;
+    }
+    if (numbers === true) {
+      selectedCharacters = selectedCharacters + numbers;
+    }
+    if (specialCharacters === true) {
+      selectedCharacters = selectedCharacters + specialCharacters;
+    }
+        
+    let finalPassword = password (passwordLength, selectedCharacters);
+    return finalPassword;
 }
 
-generatePassword();
+function password (passwordLength, selectedCharacters) {
+   let password = "";
+   for (var i = 0; i < passwordLength; i++) {
+       password += selectedCharacters.charAt(Math.floor(Math.random() * selectedCharacters.length));
+   }
+   return password;
+}
 
 // Write password to the #password input
-function writePassword() {
-  let password = generatePassword();
-  let passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-let lowercaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
-let lowercaseLetters = ["A", "B", "C"]
-let numbers = ["1", "2", "3"]
-let specialCharacters = ["&", "(", "%"]
-
